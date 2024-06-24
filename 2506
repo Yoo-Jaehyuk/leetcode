@@ -1,0 +1,19 @@
+class Solution(object):
+    def similarPairs(self, words):
+        """
+        :type words: List[str]
+        :rtype: int
+        """
+        from collections import Counter
+        
+        def canonical_form(word):
+            return ''.join(sorted(set(word)))
+        
+        forms = Counter(canonical_form(word) for word in words)
+        
+        count = 0
+        for freq in forms.values():
+            if freq > 1:
+                count += freq * (freq - 1) // 2
+        
+        return count
