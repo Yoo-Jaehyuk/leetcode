@@ -1,0 +1,11 @@
+class Solution(object):
+    def haveConflict(self, event1, event2):
+        """
+        :type event1: List[str]
+        :type event2: List[str]
+        :rtype: bool
+        """
+        start1, end1 = event1
+        start2, end2 = event2
+        
+        return not (end1 < start2 or end2 < start1)
