@@ -1,0 +1,18 @@
+class Solution(object):
+    def romanToInt(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        
+
+        lst = [ 'M', 'D', 'C', 'L', 'X', 'V', 'I', 'CM', 'CD', 'XC', 'XL', 'IX', 'IV']
+        lst2 = [1000, 500, 100, 50, 10, 5, 1, -200, -200, -20, -20, -2, -2]
+        y = 0
+
+
+        for j in range(len(lst)):
+            y = y + s.count(lst[j])*lst2[j]
+        
+        return y
+        
