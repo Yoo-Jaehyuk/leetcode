@@ -1,0 +1,32 @@
+class Solution(object):
+    def countTime(self, time):
+        """
+        :type time: str
+        :rtype: int
+        """
+        hours, minutes = time.split(':')
+
+        hour_possibilities = self.possible_hours(hours)
+        minute_possibilities = self.possible_minutes(minutes)
+        
+        return hour_possibilities * minute_possibilities
+    
+    def possible_hours(self, hours):
+        if hours == '??':
+            return 24
+        if hours[0] == '?' and hours[1] == '?':
+            return 3 if hours[0] == '2' else 10
+        if hours[0] == '?':
+            return 3 if hours[1] < '4' else 2
+        if hours[1] == '?':
+            return 10 if hours[0] < '2' else 4
+        return 1
+    
+    def possible_minutes(self, minutes):
+        if minutes == '??':
+            return 60
+        if minutes[0] == '?':
+            return 6
+        if minutes[1] == '?':
+            return 10
+        return 1
