@@ -1,0 +1,20 @@
+class Solution(object):
+    def findWords(self, words):
+        """
+        :type words: List[str]
+        :rtype: List[str]
+        """
+        rows = [
+            set("qwertyuiop"),
+            set("asdfghjkl"),
+            set("zxcvbnm")
+        ]
+        
+        result = []
+        
+        for word in words:
+            lower_word_set = set(word.lower())
+            if any(lower_word_set <= row for row in rows):
+                result.append(word)
+        
+        return result
