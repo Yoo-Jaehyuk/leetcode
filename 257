@@ -1,0 +1,23 @@
+class Solution(object):
+    def binaryTreePaths(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[str]
+        """
+        if not root:
+            return []
+        
+        paths = []
+        
+        def dfs(node, current_path):
+            if not node.left and not node.right:
+                paths.append(current_path)
+                return
+            
+            if node.left:
+                dfs(node.left, current_path + '->' + str(node.left.val))
+            if node.right:
+                dfs(node.right, current_path + '->' + str(node.right.val))
+        
+        dfs(root, str(root.val))
+        return paths
