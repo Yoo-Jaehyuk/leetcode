@@ -1,0 +1,19 @@
+class Solution(object):
+    def licenseKeyFormatting(self, s, k):
+        """
+        :type s: str
+        :type k: int
+        :rtype: str
+        """
+        s = s.replace("-", "").upper()
+        n = len(s)
+        first_group = n % k
+        
+        result = []
+        if first_group:
+            result.append(s[:first_group])
+        
+        for i in range(first_group, n, k):
+            result.append(s[i:i + k])
+        
+        return "-".join(result)
